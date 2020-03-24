@@ -7,7 +7,7 @@ import java.util.Base64;
 public class Encrypt {
     private static final String STANDARD = "SHA-512";
     private static final String outputFilePath = "res/result.txt";
-    private static final String[] encryptThis = {"9asswordf0rEmail","12345678","easy123","Animesh123","SFDF1ROFDKF423","SFDF1ROFDK$%&","TZTUTZU6S74fcdstfwe23"};
+    private static final String[] encryptThis = {"WERSDF43543"};
     private static final String[] encryptedList = new String[encryptThis.length];
     private static MessageDigest messageDigest;
 
