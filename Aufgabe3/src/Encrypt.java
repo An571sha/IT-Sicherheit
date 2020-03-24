@@ -7,7 +7,7 @@ import java.util.Base64;
 public class Encrypt {
     private static final String STANDARD = "SHA-512";
     private static final String outputFilePath = "res/result.txt";
-    private static final String[] encryptThis = {"WERSDF43543"};
+    private static final String[] encryptThis = {"Pass123456"};
     private static final String[] encryptedList = new String[encryptThis.length];
     private static MessageDigest messageDigest;
 
@@ -17,9 +17,7 @@ public class Encrypt {
             messageDigest = getMessageDigest();
             for (String encryptThi : encryptThis) {
 
-                byte[] stringsInBytes = encryptThi.getBytes(StandardCharsets.UTF_8);
-                byte[] endResult = messageDigest.digest(stringsInBytes);
-                String encrypted = Base64.getEncoder().encodeToString(endResult);
+                String encrypted = encryptString(messageDigest, encryptThi);
                 encryptedList[counter] = encrypted;
                 counter++;
             }
@@ -59,5 +57,15 @@ public class Encrypt {
 
     public static MessageDigest getMessageDigest() throws NoSuchAlgorithmException {
         return MessageDigest.getInstance(STANDARD);
+    }
+
+    public static String encryptString(MessageDigest messageDigest, String inputString){
+        if (inputString != null && !inputString.isEmpty()) {
+
+            byte[] stringsInBytes = inputString.getBytes(StandardCharsets.UTF_8);
+            byte[] endResult = messageDigest.digest(stringsInBytes);
+            return Base64.getEncoder().encodeToString(endResult);
+        }
+        return null;
     }
 }
